@@ -51,7 +51,7 @@
   --breakpoint-lg: 960px;
   --breakpoint-xl: 1200px;
 
-  --font-mono: var(--font-jetbrainsMono);
+  --font-primary: var(--font-jetbrainsMono);
 }
 
 :root {
@@ -62,7 +62,7 @@
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: #101c22;
+  --primary: #1c1c22;
   --primary-foreground: oklch(0.984 0.003 247.858);
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
@@ -129,7 +129,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply font-mono;
+    @apply font-primary bg-primary text-white leading-loose;
   }
 }
 
