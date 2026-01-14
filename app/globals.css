@@ -143,5 +143,25 @@
 }
 
 @utility container {
-  padding: 15px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 3vw, 3rem);
+  max-width: 100%;
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1600px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1800px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 92%;
+  }
 }

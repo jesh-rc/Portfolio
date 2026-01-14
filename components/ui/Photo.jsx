@@ -7,7 +7,7 @@ import Image from "next/image";
 const Photo = () => {
     return (
         <div className="w-full h-full relative">
-            <motion.div
+            <motion.div className="relative flex items-center justify-center"
                 initial={{opacity: 0}}
                 animate={{
                     opacity: 1,
@@ -21,27 +21,27 @@ const Photo = () => {
                         opacity: 1,
                         transition: {delay: 2.4, duration: 0.4, ease: "easeInOut"}
                     }}
-                className={`w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute`}>
+                className={`w-[200px] h-[200px] xl:w-[400px] xl:h-[400px] mix-blend-lighten absolute`}>
                     <Image
                         src="/assets/photo.png"
                         priority
                         quality={100}
                         fill
                         alt=""
-                        className="object-contain brightness-110 contrast-110"
+                        className="object-cover brightness-110 contrast-110"
                     />
                 </motion.div>
 
                 {/* circle */}
                 <motion.svg
-                    className="w-[300px] xl:w-[506px] h-[300px] xl:h-[506px]"
+                    className="w-[215px] h-[215px] xl:w-[415px] xl:h-[415px]"
                     fill="transparent"
-                    viewBox="0 0 510 510"
+                    viewBox="0 0 520 520"
                     xmlns="http://www.w3.org/2000/svg"
                 >
                     <motion.circle
-                        cx="253"
-                        cy="253"
+                        cx="260"
+                        cy="260"
                         r="250"
                         stroke="#00ff99"
                         strokeWidth="4"
