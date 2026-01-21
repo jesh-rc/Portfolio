@@ -18,15 +18,26 @@ const Home = () => {
             <h1 className="h1 mb-6">
               Hello I'm <br /> <span className="text-accent">Jeshurun Constantine</span>
             </h1>
-            <p className="max-w-[500px] mb-9 text-white/80">
+            <p className="max-w-[990px] mb-9 text-white/80">
             I excel at crafting elegant digital experiences and I am 
               proficient in various programming languages and technologies
             </p>
             {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button variant="outline" size="lg" className="uppercase flex items-center gap-2">
-                <span>Download CV</span>
-                <FiDownload className="text-xl" />
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="uppercase flex items-center gap-2"
+              >
+                <a
+                  href="/assets/resume/Jeshurun_Constantine_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>Download Resume</span>
+                  <FiDownload className="text-xl" />
+                </a>
               </Button>
               <div className="mb-8 xl:mb-0">
                 <Social
