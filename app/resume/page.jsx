@@ -16,7 +16,8 @@ import { SiTailwindcss, SiNextdotjs } from 'react-icons/si';
 const about = {
   title: "About me",
   description:
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  `Currently a software engineering student at Ontario Tech University with goals to pursue
+   a career in backend development, cloud computing, and scalable systems.`,
   info: [
     {
       fieldName: "Name",
@@ -50,7 +51,10 @@ const experience = {
   icon: '/assets/resume/badge.svg',
   title: 'My experience',
   description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    `Full-stack developer with experience ranging from high-level software architecture to
+     responsive web design. I thrive on solving complex technical problems and delivering
+      high-quality code across the entire development lifecycle, supported by a background in
+       leadership and organizational management.`,
     items: [
       {
         company: "Ebenezer Solutions",
@@ -80,7 +84,9 @@ const education = {
   icon: '/assets/resume/cap.svg',
   title: 'My education',
   description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    `Currently pursuing a Bachelor of Software Engineering with a focus on building robust,
+     scalable systems. Always eager to apply my knowledge in practical settings. Also a certified
+      pianist with a decade of training in classical music!`,
     items: [
       {
         institution: "Ontario Tech University",
@@ -98,7 +104,10 @@ const education = {
 // skills data
 const skills = {
   title: "My skills",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  description:
+    `Proficient in a diverse set of technologies and tools, enabling me to build
+     comprehensive and efficient software solutions. Always eager to learn more and
+      update this list!`,
   skillList: [
     {
       icon: <FaHtml5 />,
