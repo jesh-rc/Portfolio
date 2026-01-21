@@ -1,10 +1,11 @@
 "use client";
 import CountUp from "react-countup";
+import { useState, useEffect } from "react";
 
 const stats = [
     {
-        num: 12,
-        text: "Years of experience",
+        num: 5,
+        text: "Months of experience",
     },
     {
         num: 26,
