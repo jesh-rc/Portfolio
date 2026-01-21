@@ -59,7 +59,7 @@ const experience = {
       },
       {
         company: "Skintek",
-        position: "Web Developmener Intern",
+        position: "Web Developer Intern",
         duration: "Jul 2025 - Aug 2025"
       },
       {
