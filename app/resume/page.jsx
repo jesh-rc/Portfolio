@@ -7,10 +7,15 @@ import {
   FaJs,
   FaReact,
   FaFigma,
-  FaNodeJs
+  FaNodeJs,
+  FaPython,
+  FaAws,
+  FaGit,
+  FaGithub,
 } from 'react-icons/fa';
 
-import { SiTailwindcss, SiNextdotjs } from 'react-icons/si';
+import { SiTailwindcss, SiNextdotjs, SiPostgresql, SiMysql, SiCplusplus, SiMongodb } from 'react-icons/si';
+import { DiJava } from 'react-icons/di';
 
 // about data
 const about = {
@@ -141,7 +146,42 @@ const skills = {
       icon: <FaFigma />,
       name: "figma",
     },
-    
+    {
+      icon: <FaPython />,
+      name: "python",
+    },
+    {
+      icon: <DiJava />,
+      name: "java",
+    },
+    {
+      icon: <SiCplusplus />,
+      name: "c++",
+    },
+    {
+      icon: <SiPostgresql />,
+      name: "postgresql",
+    },
+    {
+      icon: <SiMysql />,
+      name: "mysql",
+    },
+    {
+      icon: <SiMongodb />,
+      name: "mongodb",
+    },
+    {
+      icon: <FaAws />,
+      name: "aws",
+    },
+    {
+      icon: <FaGit />,
+      name: "git",
+    },
+    {
+      icon: <FaGithub />,
+      name: "github",
+    },
   ]
 };
 
@@ -244,12 +284,11 @@ const Resume = () => {
                 </TabsContent>
                 {/* skills */}
                 <TabsContent value="skills" className="w-full">
-                  <div className='flex flex-col gap-[30px]'>
-                    <div className='flex flex-col gap-[30px] text-center xl:text-left'>
-                      <h3 className='text-4xl font-bold'>{skills.title}</h3>
-                      <p className='text-white/60 mx-auto xl:mx-0'>{skills.description}</p>
-                    </div>
-                    <ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]'>
+                  <div className='flex flex-col gap-[30px] text-center xl:text-left'>
+                    <h3 className='text-4xl font-bold'>{skills.title}</h3>
+                    <p className='text-white/60 mx-auto xl:mx-0'>{skills.description}</p>
+                    <ScrollArea className='h-[400px]'>
+                      <ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]'>
                       {skills.skillList.map((skill, index) => {
                         return (
                           <li key={index}>
@@ -269,6 +308,7 @@ const Resume = () => {
                         )
                       })}
                     </ul>
+                    </ScrollArea>
                   </div>
                 </TabsContent>
                 {/* about me */}
