@@ -31,7 +31,7 @@ const Home = () => {
                 className="uppercase flex items-center gap-2"
               >
                 <a
-                  href="/assets/resume/Jeshurun_Constantine_Resume.pdf"
+                  href="/assets/docs/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
