@@ -18,13 +18,18 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import WorkSliderBtns from "@/components/ui/WorkSliderBtns";
+import InProgress from "@/components/ui/InProgress";
 
 const projects =[
   {
     num: '01',
     category: 'Web Development',
     title: "project 1",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: `Redesigned a WordPress website ensuring a responsive,
+     modern design aligned with provided Figma wireframes. Researched and evaluated 
+     SEO strategies, including keyword optimization, on-page structure, and 
+     back-link opportunities, to improve site visibility and align the website 
+     with best practices for organic growth.`,
     stack: [{ name: "Html 5"}, { name: "Css 3" }, { name: "JavaScript" }, { name: "WordPress" }, { name: "Figma" }],
     media: {
       type: 'video',
@@ -37,7 +42,10 @@ const projects =[
     num: '02',
     category: 'Data Structures & Algorithms',
     title: "project 2",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: `Developed a web-based text editor with version control functionality,
+     enabling users to save multiple versions of text and restore previous versions. 
+     Uses doubly-linked lists to allow the user to traverse through different 
+     versions, and uses stacks to manage undo and redo operations.`,
     stack: [{ name: "Html 5"}, { name: "Css 3" }, { name: "JavaScript" }],
     media: {
       type: 'video',
@@ -48,13 +56,30 @@ const projects =[
   },
   {
     num: '03',
-    category: 'frontend',
+    category: 'Monitoring & Alerting System',
     title: "project 3",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    stack: [{ name: "Html 5"}, { name: "Css 3" }, { name: "JavaScript" }],
+    description: `Developed a program that monitors system metrics, evaluates
+     them against configruable thresholds, checks for any failed services, 
+     logs results, and sends email alerts when issues are detected.`,
+    stack: [{ name: "Shell Scripting"}, { name: "Linux" }, { name: "WSL" }, { name: "Ubuntu" }],
     media: {
       type: 'video',
-      src: '/assets/videos/project2.mp4'
+      src: '/assets/videos/project3.mp4'
+    },
+    live: "",
+    github: "https://github.com/jesh-rc/Monitoring-and-Alerting-System",
+  },
+  {
+    num: '04',
+    category: 'Automated Image Processing Pipeline',
+    title: "project 4",
+    description: `IN PROGRESS: Developing a serverless image processing system that
+     automatically categorizes uploaded images using AWS Rekognition labels. 
+     Planning to use DynamoDB to store image metadata and S3 for image storage.`,
+    stack: [{ name: "Python"}, { name: "AWS Lambda" }, { name: "S3" }, { name: "DynamoDB" }, { name: "Rekognition" }],
+    media: {
+      type: null,
+      src: null
     },
     live: "",
     github: "",
@@ -165,7 +190,7 @@ const Work = () => {
                       <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
                       {/* image/video */}
                       <div className={`relative w-full h-full`}>
-                        {project.media.type === "video" ? (
+                        {project.media && project.media.type === "video" ? (
                           <video
                             src={project.media.src}
                             autoPlay
@@ -174,13 +199,15 @@ const Work = () => {
                             playsInline
                             className="w-full h-full object-cover"
                           />
-                        ) : (
+                        ) : project.media && project.media.type === "image" ? (
                           <Image
                             src={project.media.src}
                             fill
                             className="relative w-full h-full object-cover"
                             alt={project.title}
                           />
+                        ) : (
+                          <InProgress label="Project In Progress" />
                         )}
                       </div>
                     </div>

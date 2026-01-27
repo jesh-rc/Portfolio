@@ -35,11 +35,36 @@ const info =[
 ];
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 
 
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: ""
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await response.json();
+    console.log(result);
+  };
+
     return (
         <motion.section
           initial={{opacity: 0}}
@@ -52,7 +77,9 @@ const Contact = () => {
             <div className="flex flex-col xl:flex-row gap-[30px]">
               {/* form */}
               <div className="xl:h-[54%] order-2 xl:order-none">
-                <form className={`flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl`}>
+                <form
+                  onSubmit={handleSubmit}
+                  className={`flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl`}>
                   <h3 className="text-4xl text-accent">Let's work together</h3>
                   <p className="text-white/60">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -60,13 +87,21 @@ const Contact = () => {
                   </p>
                   {/* input */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <Input type="firstname" placeholder="First Name" />
-                    <Input type="lastname" placeholder="Last Name" />
-                    <Input type="email" placeholder="Email" />
-                    <Input type="phone" placeholder="Phone" />
+                    <Input type="firstname" placeholder="First Name" value={formData.firstname}
+                      onChange={(e) => setFormData({...formData, firstname: e.target.value})} />
+                    <Input type="lastname" placeholder="Last Name" value={formData.lastname}
+                      onChange={(e) => setFormData({...formData, lastname: e.target.value})} />
+                    <Input type="email" placeholder="Email" value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})} />
+                    <Input type="phone" placeholder="Phone" value={formData.phone}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})} />
                   </div>
                   {/* select */}
-                  <Select>
+                  <Select
+                    value={formData.service}
+                    onValueChange={(value) =>
+                      setFormData({...formData, service: value})
+                    }>
                     <SelectTrigger className={`w-full cursor-pointer`}>
                       <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
@@ -83,9 +118,19 @@ const Contact = () => {
                   <Textarea
                     className={`h-[200px]`}
                     placeholder="Type your message here"
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({...formData, message: e.target.value})
+                    }
                   />
                   {/* btn */}
-                  <Button size="md" className={`max-w-40 cursor-pointer`}>Send message</Button>
+                  <Button
+                    type="submit"
+                    size="md"
+                    className={`max-w-40 cursor-pointer`}
+                  >
+                    Send message
+                  </Button>
                 </form>
               </div>
               {/* info */}
