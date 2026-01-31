@@ -32,8 +32,8 @@ const projects =[
      with best practices for organic growth.`,
     stack: [{ name: "Html 5"}, { name: "Css 3" }, { name: "JavaScript" }, { name: "WordPress" }, { name: "Figma" }],
     media: {
-      type: 'video',
-      src: '/assets/videos/project1.mp4'
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/oi51ETaXONA?autoplay=1&mute=1&loop=1&playlist=oi51ETaXONA'
     },
     live: "",
     github: "",
@@ -48,8 +48,8 @@ const projects =[
      versions, and uses stacks to manage undo and redo operations.`,
     stack: [{ name: "Html 5"}, { name: "Css 3" }, { name: "JavaScript" }],
     media: {
-      type: 'video',
-      src: '/assets/videos/project2.mp4'
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/iSNq7UGpeQc?autoplay=1&mute=1&loop=1&playlist=iSNq7UGpeQc'
     },
     live: "",
     github: "https://github.com/jesh-rc/Version-Control-Project",
@@ -63,8 +63,8 @@ const projects =[
      logs results, and sends email alerts when issues are detected.`,
     stack: [{ name: "Shell Scripting"}, { name: "Linux" }, { name: "WSL" }, { name: "Ubuntu" }],
     media: {
-      type: 'video',
-      src: '/assets/videos/project3.mp4'
+      type: 'youtube',
+      src: 'https://www.youtube.com/embed/BPzlS1HLNxc?autoplay=1&mute=1&loop=1&playlist=BPzlS1HLNxc'
     },
     live: "",
     github: "https://github.com/jesh-rc/Monitoring-and-Alerting-System",
@@ -93,11 +93,11 @@ const projects =[
 const Work = () => {
   const [project, setProject] = useState(projects[0]);
 
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const handleSlideChange = (swiper) => {
-    // get gurrent slide index
-    const currentIndex = swiper.activeIndex;
-    // update project state based on current slide index
-    setProject(projects[currentIndex]);
+    setActiveIndex(swiper.activeIndex);
+    setProject(projects[swiper.activeIndex]);
   };
 
   return (
@@ -178,7 +178,7 @@ const Work = () => {
           <div className={`w-full xl:w-[50%]`}>
             <Swiper
               spaceBetween={30}
-              slider Preview={1}
+              slidesPerView={1}
               className={`xl:h-[520px] mb-12`}
               onSlideChange={handleSlideChange}
             >
@@ -187,18 +187,22 @@ const Work = () => {
                   <SwiperSlide key={index} className="w-full">
                     <div className={`h-[400px] relative group flex justify-center items-center bg-pink-50/20`}>
                       {/* overlay */}
-                      <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
+                      {/* <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div> */}
                       {/* image/video */}
                       <div className={`relative w-full h-full`}>
-                        {project.media && project.media.type === "video" ? (
-                          <video
-                            src={project.media.src}
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className="w-full h-full object-cover"
-                          />
+                        {project.media && project.media.type === "youtube" ? (
+                          activeIndex === index ? (
+                            <iframe
+                              src={project.media.src}
+                              allow="autoplay; encrypted-media"
+                              allowFullScreen
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-black/40">
+                              <span className="text-white/60 text-sm">Video preview</span>
+                            </div>
+                          )
                         ) : project.media && project.media.type === "image" ? (
                           <Image
                             src={project.media.src}
