@@ -3,9 +3,17 @@ import nextVitals from "eslint-config-next/core-web-vitals";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
-  // Override default ignores of eslint-config-next.
+  {
+    // This is where you put the rules from the tutorial
+    rules: {
+      "react/no-unescaped-entities": "off",
+      "@typescript-eslint/quotes": "off",
+      "quotes": [0],
+      "no-useless-escape": 0,
+    },
+  },
+  // Default ignores for eslint.config.mjs
   globalIgnores([
-    // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",
     "build/**",
