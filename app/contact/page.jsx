@@ -82,8 +82,8 @@ const Contact = () => {
                   className={`flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl`}>
                   <h3 className="text-4xl text-accent">Let's work together</h3>
                   <p className="text-white/60">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                     Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Feel free to send me a message! Ask me about my work, resume,
+                    or anything else you'd like to know.
                   </p>
                   {/* input */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -116,7 +116,7 @@ const Contact = () => {
                   </Select>
                   {/* textarea */}
                   <Textarea
-                    className={`h-[200px]`}
+                    className={`h-[115px]`}
                     placeholder="Type your message here"
                     value={formData.message}
                     onChange={(e) =>
