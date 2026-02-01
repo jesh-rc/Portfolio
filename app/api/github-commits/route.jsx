@@ -1,48 +1,38 @@
-
-
+// app/api/github-commits/route.jsx
 export async function GET() {
-  const username = "jesh-rc"; // replace with your GitHub username
-  const token = process.env.GITHUB_TOKEN; // your personal access token
+  const token = process.env.GITHUB_TOKEN;
+  const username = "jesh-rc";
+
+  const query = `
+    query {
+      user(login: "${username}") {
+        contributionsCollection {
+          totalCommitContributions
+        }
+      }
+    }
+  `;
 
   try {
-    // Fetch user repos
-    const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`, {
+    console.log("Fetching GitHub contributions...");
+    const res = await fetch("https://api.github.com/graphql", {
+      method: "POST",
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ query }),
+      next: {
+        revalidate: 60 * 60, // ✅ cache for 1 hour
       },
     });
 
-    if (!res.ok) throw new Error("Failed to fetch repos");
+    if (!res.ok) throw new Error("Failed to fetch GitHub contributions");
 
-    const repos = await res.json();
+    const data = await res.json();
 
-    // Sum commits for all repos
-    let totalCommits = 0;
-
-    for (const repo of repos) {
-      const commitsRes = await fetch(
-        `https://api.github.com/repos/${username}/${repo.name}/commits?author=${username}&per_page=1`,
-        {
-          headers: { Authorization: `token ${token}` },
-        }
-      );
-
-      if (!commitsRes.ok) continue; // skip if API call fails
-
-      // GitHub returns commit count in headers: x-total-count (only for some endpoints)
-      const linkHeader = commitsRes.headers.get("link");
-      if (linkHeader) {
-        const match = linkHeader.match(/&page=(\d+)>; rel="last"/);
-        if (match) {
-          totalCommits += parseInt(match[1]);
-        } else {
-          totalCommits += 1; // at least one commit
-        }
-      } else {
-        const commits = await commitsRes.json();
-        totalCommits += commits.length;
-      }
-    }
+    const totalCommits =
+      data?.data?.user?.contributionsCollection?.totalCommitContributions || 0;
 
     return new Response(JSON.stringify({ totalCommits }), {
       status: 200,
