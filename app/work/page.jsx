@@ -104,7 +104,7 @@ const Work = () => {
     <motion.section
       initial={{opacity: 0}}
       animate={{opacity: 1, transition: {delay: 2.4, duration: 0.4, ease: "easeIn"}}}
-      className={`min-h-[80vh] flex flex-col justify-center py-12 xl:px-0`}
+      className={`min-h-screen flex flex-col justify-center py-12 xl:px-0 overflow-hidden`}
     >
       <div className="container mx-auto">
         <div className={`flex flex-col xl:flex-row xl:gap-[30px]`}>
@@ -175,7 +175,7 @@ const Work = () => {
               </div>
             </div>
           </div>
-          <div className={`w-full xl:w-[50%]`}>
+          <div className={`w-full xl:w-[50%] overflow-hidden relative`}>
             <Swiper
               spaceBetween={30}
               slidesPerView={1}
