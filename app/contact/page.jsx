@@ -146,7 +146,7 @@ const Contact = () => {
                           </div>
                           <div className="flex-1">
                             <p className="text-white/60">{item.title}</p>
-                            <h3 className="text-xl">{item.description}</h3>
+                            <h3 className="text-xl break-all sm:break-words">{item.description}</h3>
                           </div>
                         </li>
                       )
