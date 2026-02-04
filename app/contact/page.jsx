@@ -73,7 +73,7 @@ const Contact = () => {
           }}
           className="min-h-screen py-6 overflow-hidden"
         >
-          <div className="container mx-auto">
+          <div className="max-w-[1280px] mx-auto px-4 overflow-hidden">
             <div className="flex flex-col xl:flex-row gap-[30px]">
               {/* form */}
               <div className="xl:h-[54%] order-2 xl:order-none">
