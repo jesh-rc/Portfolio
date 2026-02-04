@@ -4,6 +4,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { CiMenuFries } from 'react-icons/ci';
+import { useState } from 'react';
 
 const links = [
     {
@@ -30,15 +31,16 @@ const links = [
 
 const MobileNav = () => {
     const pathname = usePathname();
+    const [open, setOpen] = useState(false);
     return (
-        <Sheet>
+        <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger className="flex justify-center items-center">
                 <CiMenuFries className="text-[32px] text-accent" />
             </SheetTrigger>
             <SheetContent className="flex flex-col p-4">
                 {/* logo */}
                 <div className="mt-32 mb-40 text-center text-2xl">
-                    <Link href="/">
+                    <Link href="/" onClick={() => setOpen(false)}>
                         <h1 className='text-4xl font-semibold'>
                             jesh<span className="text-accent">.</span>rc
                         </h1>
@@ -51,6 +53,7 @@ const MobileNav = () => {
                             <Link
                                 href={link.path}
                                 key={index}
+                                onClick={() => setOpen(false)}
                                 className={`${
                                     link.path === pathname &&
                                     "text-accent border-b-2 border-accent"
