@@ -77,6 +77,11 @@ const experience = {
         duration: "May 2024 - Aug 2024"
       },
       {
+        company: "Tutorax",
+        position: "STEM Tutor",
+        duration: "Feb 2026 - Present"
+      },
+      {
         company: "Grace Tabernacle Apostolic Church",
         position: "Church Ministry Associate",
         duration: "Apr 2021 - Present"
