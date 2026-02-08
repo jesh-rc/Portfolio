@@ -71,9 +71,9 @@ const Contact = () => {
           animate={{opacity: 1,
             transition: {delay: 2.4, duration: 0.4, ease: "easeIn"}
           }}
-          className="min-h-screen py-6 overflow-hidden"
+          className="min-h-0 py-6 overflow-hidden"
         >
-          <div className="max-w-[1280px] mx-auto px-4 overflow-hidden">
+          <div className="max-w-[1440px] mx-auto px-4 overflow-hidden">
             <div className="flex flex-col xl:flex-row gap-[30px]">
               {/* form */}
               <div className="xl:h-[54%] order-2 xl:order-none">

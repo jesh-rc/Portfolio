@@ -7,36 +7,25 @@ import { CiMenuFries } from 'react-icons/ci';
 import { useState } from 'react';
 
 const links = [
-    {
-        name: 'home',
-        path: '/'
-    },
-    // {
-    //     name: 'services',
-    //     path: '/services'
-    // },
-    {
-        name: 'resume',
-        path: '/resume'
-    },
-    {
-        name: 'work',
-        path: '/work'
-    },
-    {
-        name: 'contact',
-        path: '/contact'
-    },
+    { name: 'home', path: '/' },
+    { name: 'resume', path: '/resume' },
+    { name: 'work', path: '/work' },
+    { name: 'contact', path: '/contact' },
 ]
 
 const MobileNav = () => {
     const pathname = usePathname();
     const [open, setOpen] = useState(false);
+
     return (
         <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger className="flex justify-center items-center">
+            {/* Added fixed positioning, high z-index, and placement 
+               to keep the hamburger visible during scroll.
+            */}
+            <SheetTrigger className="fixed top-8 right-8 z-50 flex justify-center items-center p-2 bg-primary/80 backdrop-blur-sm rounded-md border border-white/10">
                 <CiMenuFries className="text-[32px] text-accent" />
             </SheetTrigger>
+            
             <SheetContent className="flex flex-col p-4">
                 {/* logo */}
                 <div className="mt-32 mb-40 text-center text-2xl">
