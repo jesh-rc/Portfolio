@@ -62,6 +62,11 @@ const experience = {
        leadership and organizational management.`,
     items: [
       {
+        company: "Solora Technologies",
+        position: "Full Stack Developer Intern",
+        duration: "March 2026 - Present"
+      },
+      {
         company: "Ebenezer Solutions",
         position: "Jr. Software Architect Intern",
         duration: "Sep 2025 - Nov 2025"
